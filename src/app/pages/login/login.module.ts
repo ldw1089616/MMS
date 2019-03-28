@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { LoginPage } from './login';
 import { LoginPageRoutingModule } from './login-routing.module';
-import { LocalStorageService } from '../../common-service';
+import { LocalStorageService, SessionStorageService } from '../../common-service';
 import { AuthControllerService} from '../../service';
 @NgModule({
   imports: [
@@ -19,6 +19,7 @@ import { AuthControllerService} from '../../service';
   ],
   providers: [
     LocalStorageService,
+    SessionStorageService,
     AuthControllerService
   ]
 })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckTutorial } from './providers/check-tutorial.service';
-
+import {PermissionGuard} from './route-guard/PermissionGuard';
 const routes: Routes = [
   {
     path: '',
@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    loadChildren: './pages/tabs-page/tabs-page.module#TabsModule'
+    loadChildren: './pages/tabs-page/tabs-page.module#TabsModule',
+    canActivate: [PermissionGuard]
   },
   {
     path: 'tutorial',

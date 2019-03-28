@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthControllerService, User, TokenInfo} from '../../service';
-import { LocalStorageService } from '../../common-service';
+import { LocalStorageService, SessionStorageService} from '../../common-service';
 
 
 @Component({
@@ -18,6 +18,7 @@ export class LoginPage {
   constructor(
     public authControllerService: AuthControllerService,
     private localS: LocalStorageService,
+    private sessionS: SessionStorageService,
     public router: Router
   ) { }
 
@@ -28,7 +29,7 @@ export class LoginPage {
       this.authControllerService.loginUsingPOST(this.login).subscribe(
         val => {
           this.token = val;
-          this.localS.setStore('token', this.token.accessToken);
+          this.sessionS.setStore('token', this.token.accessToken);
           this.router.navigateByUrl('/app/tabs/schedule');
         },
         () => {

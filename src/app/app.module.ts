@@ -12,6 +12,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AuthInterceptor} from './interceptor/AuthInterceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {PermissionGuard} from './route-guard/PermissionGuard';
 @NgModule({
   imports: [
     BrowserModule,
@@ -29,7 +30,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    PermissionGuard
   ],
   bootstrap: [AppComponent]
 })
