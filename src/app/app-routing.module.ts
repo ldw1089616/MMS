@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: './pages/signup/signup.module#SignUpModule'
   },
   {
+    path: 'home',
+    loadChildren: './pages/home/home.module#HomeModule'
+  },
+  {
     path: 'app',
     loadChildren: './pages/tabs-page/tabs-page.module#TabsModule',
     canActivate: [PermissionGuard]
